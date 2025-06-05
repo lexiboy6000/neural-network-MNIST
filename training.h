@@ -112,10 +112,9 @@ double* learn(double* images,int* labels,
 
 	for(int epoch=0;epoch<num_epochs;epoch++){
 
-		//divide learning rate by 2 every 10 epochs
-		if(epoch == 10 || epoch == 20 || epoch == 30){
-			printf("dividing learning rate by 2 \n");
-			learning_rate /= 2;
+		if((epoch % frequency) == 0 && epoch != 0){
+			printf("dividing learning rate by %d \n",reduce_factor);
+			learning_rate /= reduce_factor;
 		}
 
 		//instead shuffle data for each epoh in their entirety...
