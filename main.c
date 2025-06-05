@@ -191,12 +191,23 @@ int main()
 	free(labels);
 
 						/********************FINAL TESTING**********************/
-
+	
 	double neurons[numNeurons];
 	double f_prime[numNeurons];
+	double* output = (neurons + numNeurons - network[network_size-1]);
+
+	printf("\n first 20 test-image outputs & test-labels \n");
+	for(int i=0;i<20;i++){
+		foward_pass(neurons,f_prime,test_images+SIZE*i,weights,biases);
+		for(int j=0;j<network[network_size-1];j++){
+			printf("%f ",*(output+j));
+		}
+		printf("label: %d\n",*(test_labels+i));
+
+	}
 
 	double last_error = test_all(test_images,test_labels,neurons,f_prime,weights,biases);
-	printf("percent error = %.2f%% \n",last_error);
+	printf("\nFINAL percent error = %.2f%% \n",last_error);
 
 	free(test_images);
 	free(test_labels);
