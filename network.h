@@ -14,6 +14,9 @@ double learning_rate = 0.5;
 int num_epochs = 32;
 int batch_size = 10;
 
+//changing learning rate params
+int frequency = 10; 	//change every __ epochs
+int reduce_factor = 2; 	//reduce learning_rate by __ amount
 
 int numNeurons;
 int numWeights;
